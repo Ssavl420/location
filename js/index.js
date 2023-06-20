@@ -1,3 +1,6 @@
+const CURRENT_IP = document.querySelector('#ip');
+const CURRENT_LOCATION = document.querySelector('#location');
+
 const options = {
    enableHighAccuracy: true,
    timeout: 5000,
@@ -7,11 +10,14 @@ const options = {
 function success(pos) {
    const crd = pos.coords;
 
-   console.log('Ваше текущее местоположение:');
-   console.log(`Широта: ${crd.latitude}`);
-   console.log(`Долгота: ${crd.longitude}`);
-   console.log(`Плюс-минус ${crd.accuracy} метров.`);
+   CURRENT_LOCATION.innerHTML =`
+      Ваше местоположение <br> 
+      Плюс-минус: ${crd.accuracy.toFixed(2)} м.
+      <a href="https://www.openstreetmap.org/#map=17/${crd.latitude}/${crd.longitude}" target="_blank">Смотреть</a> <br>`;
+
 };
+
+
 
 function error(err) {
    console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -20,5 +26,8 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 fetch('https://ipapi.co/json/')
-   .then(d => d.json())
-   .then(d => console.log(d.ip));
+   .then(data => data.json())
+   .then(response => {
+      CURRENT_IP.innerHTML =`IP: ${response.ip} <br> Город: ${response.city}`
+      return response;
+   });
