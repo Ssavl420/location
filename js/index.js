@@ -26,9 +26,7 @@ fetch('https://ipapi.co/json/')
    .then(data => data.json())
    .then(response => {
       if (response.ip.length > 15) {
-         fetch('https://kraken.rambler.ru/userip')
-            .then(data => data.text())
-            .then(response => {response = response.ip})
+         response.ip = 'Error';
          response.city = 'Не определён'
       }
       CURRENT_IP.innerHTML =`IP ${response.ip} <br> Город: ${response.city}`
