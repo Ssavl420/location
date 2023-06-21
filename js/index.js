@@ -12,12 +12,10 @@ function success(pos) {
 
    CURRENT_LOCATION.innerHTML =`
       Ваше местоположение <br> 
-      Плюс-минус: ${crd.accuracy.toFixed(2)} м.
-      <a href="https://www.openstreetmap.org/#map=17/${crd.latitude}/${crd.longitude}" target="_blank">Смотреть</a> <br>`;
+      Плюс-минус: ${crd.accuracy.toFixed(2)} м.<br>
+      <a href="https://www.openstreetmap.org/#map=17/${crd.latitude}/${crd.longitude}" target="_blank">Карта</a> <br>`;
 
 };
-
-
 
 function error(err) {
    console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -28,6 +26,6 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 fetch('https://ipapi.co/json/')
    .then(data => data.json())
    .then(response => {
-      CURRENT_IP.innerHTML =`IP: ${response.ip} <br> Город: ${response.city}`
+      CURRENT_IP.innerHTML =`IP ${response.ip} <br> Город: ${response.city}`
       return response;
    });

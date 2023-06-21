@@ -1,7 +1,12 @@
 @import "nullindex.scss";
+@import url(https://fonts.googleapis.com/css?family=Play:regular);
 
 body {
+   font-family: "Play";
    font-size: 24px;
+   background: linear-gradient(to top, #333, #4b4b4b);
+   color: white;
+   overflow: hidden;
 }
 .container {
    margin: 0 auto;
@@ -9,11 +14,36 @@ body {
 .ip {
    margin: 100px auto 0;
    width: 300px;
-   text-align: left;
+   // text-align: left;
 }
 .location {
-   margin: 20px auto 0 ;
+   position: fixed;
+   top: 168px;
+   left: 50%;
+   transform: translate(-50%);
+   // margin: 20px auto 0 ;
    width: 300px;
-   text-align: left;
+   // display: flex;
+   // flex-direction: column;
+   // text-align: left;
    line-height: 30px;
+   // border: 1px dotted red;
+   a {
+      margin: 20px 0 0 0;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      padding: 10px;
+      color: white;
+      border-radius: 10px;
+      border: 1px solid white;
+      transition: all .5s ease;
+      &:hover {
+         color: #333;
+         background: white;
+         border-color: white;
+      }
+   }
 }
