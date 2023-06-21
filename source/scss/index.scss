@@ -10,11 +10,13 @@ body {
 }
 .container {
    margin: 0 auto;
+   display: flex;
+   flex-direction: column;
 }
 .ip {
    margin: 100px auto 0;
    width: 300px;
-   // text-align: left;
+   height: 210px;
 }
 .location {
    position: fixed;
