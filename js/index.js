@@ -26,6 +26,10 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 fetch('https://ipapi.co/json/')
    .then(data => data.json())
    .then(response => {
+      if (response.ip.length > 15) {
+         response.ip = 'Error';
+         response.city = 'Не определён'
+      }
       CURRENT_IP.innerHTML =`IP ${response.ip} <br> Город: ${response.city}`
       return response;
    });
